@@ -9,8 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            CustomText(text: "Artur", color: .red)
+            CustomText(text: "IOS", color: .green)
+            CustomText(text: "Developer", color: .brown)
+        }
+    }
+}
+
+struct CustomText: View {
+    @State var text: String
+    let color: Color
+    var body: some View {
+        TextField("Text Field", text: $text)
+            .foregroundColor(color)
+            .padding(10)
     }
 }
 
