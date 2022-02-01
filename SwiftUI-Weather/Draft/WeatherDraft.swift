@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeatherView: View {
+struct WeatherDraft: View {
     var body: some View {
         ZStack {
             Text("Сегодня первое июня")
@@ -49,7 +49,7 @@ struct CircleShadow: ViewModifier {
 struct WeatherVIew_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        WeatherView()
+        WeatherDraft()
     }
 }
 

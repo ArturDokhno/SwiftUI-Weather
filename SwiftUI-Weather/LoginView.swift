@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  LoginView.swift
 //  SwiftUI-Weather
 //
 //  Created by Артур Дохно on 21.01.2022.
@@ -12,6 +12,8 @@ struct LoginView: View {
     @State private var login = ""
     @State private var password = ""
     @State private var shouldShowLogo: Bool = true
+    @State private var showAlert: Bool = false
+    @Binding var showMainScreen: Bool
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter.default.publisher(for: UIResponder.keyboardWillChangeFrameNotification)
@@ -52,7 +54,7 @@ struct LoginView: View {
                         }
                     }.frame(maxWidth: 250)
                         .padding(.top, 50)
-                    Button(action: { print("Hello") }) {
+                    Button(action: { verifyLoginData() }) {
                         Text("Log in")
                     }.padding(.top, 50)
                         .padding(.bottom, 20)
@@ -64,9 +66,23 @@ struct LoginView: View {
                     self.shouldShowLogo = !isKeyboardOn
                 }
             }
-        }.onTapGesture {
+        }
+        .onTapGesture {
             UIApplication.shared.endEditing()
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Error"),
+                  message: Text("Incorect data"),
+                  dismissButton: .cancel())
+        }
+    }
+    private func verifyLoginData() {
+        if login == "Bar" && password == "123" {
+            showMainScreen = true
+        } else {
+            showAlert = true
+        }
+        password = ""
     }
 }
 
@@ -76,8 +92,8 @@ extension UIApplication {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(showMainScreen: .constant(false))
     }
 }
