@@ -20,6 +20,7 @@
 		75E10DE927A9AD7A0046682E /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E10DE827A9AD7A0046682E /* ForecastView.swift */; };
 		75E10DEB27A9ADBE0046682E /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E10DEA27A9ADBE0046682E /* Weather.swift */; };
 		75E10DED27A9AF300046682E /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E10DEC27A9AF300046682E /* WeatherView.swift */; };
+		75FBC14B27ABE8AB00B4049D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FBC14A27ABE8AB00B4049D /* TabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		75E10DE827A9AD7A0046682E /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		75E10DEA27A9ADBE0046682E /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		75E10DEC27A9AF300046682E /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		75FBC14A27ABE8AB00B4049D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				7558A83A27A6C3A40005A097 /* WeatherDraft.swift */,
 				75DE754B27A5769300B3A128 /* Lesson2.swift */,
+				75FBC14A27ABE8AB00B4049D /* TabBar.swift */,
 			);
 			path = Draft;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				75DE754C27A5769300B3A128 /* Lesson2.swift in Sources */,
 				75E10DDF27A973C90046682E /* MainView.swift in Sources */,
 				75E10DE227A99EA80046682E /* City.swift in Sources */,
+				75FBC14B27ABE8AB00B4049D /* TabBar.swift in Sources */,
 				75C8CF7D279A83F50014FE48 /* LoginView.swift in Sources */,
 				75E10DEB27A9ADBE0046682E /* Weather.swift in Sources */,
 				75C8CF7B279A83F50014FE48 /* SwiftUI_WeatherApp.swift in Sources */,

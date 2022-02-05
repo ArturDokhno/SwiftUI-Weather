@@ -11,8 +11,10 @@ import Combine
 struct LoginView: View {
     @State private var login = ""
     @State private var password = ""
+    
     @State private var shouldShowLogo: Bool = true
     @State private var showAlert: Bool = false
+    
     @Binding var showMainScreen: Bool
     
     private let keyboardIsOnPublisher = Publishers.Merge(
@@ -30,6 +32,7 @@ struct LoginView: View {
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
             }
+            
             ScrollView(showsIndicators: false) {
                 VStack {
                     if shouldShowLogo {
@@ -37,28 +40,30 @@ struct LoginView: View {
                             .font(.largeTitle)
                             .padding(.top, 32)
                     }
+                    
                     VStack {
                         HStack {
                             Text("Login:")
                             Spacer()
-                            TextField("", text: $login)
-                                .frame(maxWidth: 150)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            Field(isSecure: false, text: $login)
                         }
+                        
                         HStack {
                             Text("Password:")
                             Spacer()
-                            SecureField("", text: $password)
-                                .frame(maxWidth: 150)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            Field(isSecure: true, text: $password)
                         }
-                    }.frame(maxWidth: 250)
-                        .padding(.top, 50)
+                        
+                    }
+                    .frame(maxWidth: 250)
+                    .padding(.top, 50)
+                    
                     Button(action: { verifyLoginData() }) {
                         Text("Log in")
-                    }.padding(.top, 50)
-                        .padding(.bottom, 20)
-                        .disabled(login.isEmpty || password.isEmpty)
+                    }
+                    .padding(.top, 50)
+                    .padding(.bottom, 20)
+                    .disabled(login.isEmpty || password.isEmpty)
                 }
             }
             .onReceive(keyboardIsOnPublisher) { isKeyboardOn in
@@ -76,6 +81,7 @@ struct LoginView: View {
                   dismissButton: .cancel())
         }
     }
+    
     private func verifyLoginData() {
         if login == "Bar" && password == "123" {
             showMainScreen = true
@@ -95,5 +101,23 @@ extension UIApplication {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(showMainScreen: .constant(false))
+    }
+}
+
+struct Field: View {
+    let isSecure: Bool
+    @Binding var text: String
+    
+    var body: some View {
+        Group {
+            if isSecure {
+                SecureField("", text: $text)
+            } else {
+                TextField("", text: $text)
+            }
+        }
+        .frame(maxWidth: 150)
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+        .cornerRadius(10.0)
     }
 }
